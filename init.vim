@@ -28,7 +28,9 @@ call plug#begin('~/.config/nvim/plugged')
 "
 "   " Add plugins to &runtimepath
 
+Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 Plug 'altercation/vim-colors-solarized'
 Plug 'justinmk/vim-gtfo'
 Plug 'justinmk/vim-sneak'
@@ -38,13 +40,17 @@ Plug 'reedes/vim-textobj-quote'
 call plug#end()
 
 set background=dark
+set number
+
 colorscheme solarized
 
-call textobj#quote#init()
+" enable curly quote textobject but don't automatically insert them
+call textobj#quote#init({'educate': 0})
 
 let g:gtfo#terminals = { 'mac': 'iterm' }
 
 nmap <Space> <Plug>SneakForward
+nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 
 map <silent> <D-1> :tabn 1<cr>
 map <silent> <D-2> :tabn 2<cr>
@@ -56,3 +62,24 @@ map <silent> <D-7> :tabn 7<cr>
 map <silent> <D-8> :tabn 8<cr>
 map <silent> <D-9> :tabn 9<cr>
 
+" yadr-window-killer.vim
+" Use Q to intelligently close a window 
+" (if there are multiple windows into the same buffer)
+" or kill the buffer entirely if it's the last window looking into that buffer
+function! CloseWindowOrKillBuffer()
+  let number_of_windows_to_this_buffer = len(filter(range(1, winnr('$')), "winbufnr(v:val) == bufnr('%')"))
+
+  " We should never bdelete a nerd tree
+  if matchstr(expand("%"), 'NERD') == 'NERD'
+    wincmd c
+    return
+  endif
+
+  if number_of_windows_to_this_buffer > 1
+    wincmd c
+  else
+    bdelete
+  endif
+endfunction
+
+nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
