@@ -36,11 +36,14 @@ Plug 'justinmk/vim-gtfo'
 Plug 'justinmk/vim-sneak'
 Plug 'kana/vim-textobj-user'
 Plug 'reedes/vim-textobj-quote'
+Plug 'tomtom/tcomment_vim'
 
 call plug#end()
 
 set background=dark
 set number
+set wrap
+set linebreak
 
 colorscheme solarized
 
@@ -51,7 +54,12 @@ let g:gtfo#terminals = { 'mac': 'iterm' }
 
 nmap <Space> <Plug>SneakForward
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <silent> // :nohlsearch<CR>
 
+" lets you hide buffers that aren't saved to disk
+set hidden
+
+" MAC MAPPINGS
 map <silent> <D-1> :tabn 1<cr>
 map <silent> <D-2> :tabn 2<cr>
 map <silent> <D-3> :tabn 3<cr>
@@ -61,6 +69,20 @@ map <silent> <D-6> :tabn 6<cr>
 map <silent> <D-7> :tabn 7<cr>
 map <silent> <D-8> :tabn 8<cr>
 map <silent> <D-9> :tabn 9<cr>
+
+inoremap <D-BS> 
+inoremap <M-BS> 
+inoremap <M-Down> }
+inoremap <D-Down> <C-End>
+inoremap <M-Up> {
+inoremap <D-Up> <C-Home>
+noremap! <M-Right> <C-Right>
+noremap! <D-Right> <End>
+noremap! <M-Left> <C-Left>
+noremap! <D-Left> <Home>
+
+
+
 
 " yadr-window-killer.vim
 " Use Q to intelligently close a window 
