@@ -28,15 +28,15 @@ call plug#begin('~/.config/nvim/plugged')
 "
 "   " Add plugins to &runtimepath
 
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
 Plug 'altercation/vim-colors-solarized'
 Plug 'justinmk/vim-gtfo'
 Plug 'justinmk/vim-sneak'
 Plug 'kana/vim-textobj-user'
 Plug 'reedes/vim-textobj-quote'
 Plug 'tomtom/tcomment_vim'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
 
 call plug#end()
 
@@ -48,7 +48,13 @@ set linebreak
 colorscheme solarized
 
 " enable curly quote textobject but don't automatically insert them
-call textobj#quote#init({'educate': 0})
+let g:textobj#quote#educate = 0
+
+filetype plugin on
+augroup textobj_quote
+  autocmd!
+  autocmd FileType * call textobj#quote#init()
+augroup END
 
 let g:gtfo#terminals = { 'mac': 'iterm' }
 
