@@ -59,6 +59,7 @@ augroup END
 let g:gtfo#terminals = { 'mac': 'iterm' }
 
 nmap <Space> <Plug>SneakForward
+unmap s
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <silent> // :nohlsearch<CR>
 
