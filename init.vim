@@ -39,7 +39,13 @@ Plug 'shougo/deoplete.nvim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sleuth'
 Plug 'tpope/vim-unimpaired'
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+
 
 call plug#end()
 
@@ -67,6 +73,7 @@ nmap <Space> <Plug>SneakForward
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <silent> // :nohlsearch<CR>
 
+set tabstop=2 shiftwidth=2 expandtab
 " lets you hide buffers that aren't saved to disk
 set hidden
 
