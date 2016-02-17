@@ -1,3 +1,5 @@
+let g:python3_host_prog = expand('$HOME/.pyenv/versions/nvim/bin/python3')
+
 call plug#begin('~/.config/nvim/plugged')
 "
 "   " Make sure you use single quotes
@@ -33,6 +35,7 @@ Plug 'justinmk/vim-gtfo'
 Plug 'justinmk/vim-sneak'
 Plug 'kana/vim-textobj-user'
 Plug 'reedes/vim-textobj-quote'
+Plug 'shougo/deoplete.nvim'
 Plug 'tomtom/tcomment_vim'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
@@ -40,16 +43,16 @@ Plug 'tpope/vim-unimpaired'
 
 call plug#end()
 
+colorscheme solarized
 set background=dark
 set number
 set wrap
 set linebreak
 
-colorscheme solarized
 
 " enable curly quote textobject but don't automatically insert them
 let g:textobj#quote#educate = 0
-
+ 
 filetype plugin on
 augroup textobj_quote
   autocmd!
@@ -58,8 +61,9 @@ augroup END
 
 let g:gtfo#terminals = { 'mac': 'iterm' }
 
+let g:deoplete#enable_at_startup = 1
+
 nmap <Space> <Plug>SneakForward
-unmap s
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <silent> // :nohlsearch<CR>
 
@@ -112,3 +116,4 @@ function! CloseWindowOrKillBuffer()
 endfunction
 
 nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
+
