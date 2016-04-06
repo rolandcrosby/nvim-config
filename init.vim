@@ -1,4 +1,5 @@
 let g:python3_host_prog = expand('$HOME/.pyenv/versions/nvim/bin/python3')
+let g:Guifont="Consolas:h13"
 
 call plug#begin('~/.config/nvim/plugged')
 "
@@ -45,6 +46,7 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
+Plug 'vim-scripts/YankRing.vim'
 
 
 call plug#end()
@@ -120,4 +122,6 @@ function! CloseWindowOrKillBuffer()
 endfunction
 
 nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
+
+set whichwrap+=<,>,h,l,[,] " go to prev/next line with h/l and left/right arrows instead of getting stuck at beginning/end of line
 
