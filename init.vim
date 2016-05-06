@@ -47,6 +47,7 @@ Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'vim-scripts/YankRing.vim'
+Plug 'fatih/vim-go'
 
 
 call plug#end()
@@ -124,4 +125,18 @@ endfunction
 nnoremap <silent> Q :call CloseWindowOrKillBuffer()<CR>
 
 set whichwrap+=<,>,h,l,[,] " go to prev/next line with h/l and left/right arrows instead of getting stuck at beginning/end of line
+
+if $GOPATH == ""
+  let $GOPATH = expand("~/go")
+endif
+
+let mapleader = ","
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <D-r> <Plug>(go-run) %
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+map [t :tabprev<CR>
+map ]t :tabnext<CR>
 
