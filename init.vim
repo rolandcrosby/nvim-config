@@ -33,6 +33,7 @@ call plug#begin('~/.config/nvim/plugged')
 "   " Add plugins to &runtimepath
 
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
+Plug 'ervandew/supertab'
 " Plug 'altercation/vim-colors-solarized'
 Plug 'justinmk/vim-gtfo'
 Plug 'justinmk/vim-sneak'
@@ -74,6 +75,9 @@ augroup END
 let g:gtfo#terminals = { 'mac': 'iterm' }
 
 let g:deoplete#enable_at_startup = 1
+"
+
+autocmd CompleteDone * pclose " To close preview window of deoplete automagically
 
 nmap <Space> <Plug>SneakForward
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
@@ -145,5 +149,4 @@ map ]t gt
 map <C-tab> gt
 map <C-S-tab> gT
 
-autocmd CompleteDone * pclose " To close preview window of deoplete automagically
 
