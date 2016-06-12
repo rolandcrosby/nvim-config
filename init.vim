@@ -137,6 +137,8 @@ au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 
-map [t :tabprev<CR>
-map ]t :tabnext<CR>
+map [t gT
+map ]t gt
+map <C-tab> gt
+map <C-S-tab> gT
 
