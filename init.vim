@@ -1,3 +1,4 @@
+let g:python_host_prog = expand('$HOME/.pyenv/versions/nvim-py2/bin/python')
 let g:python3_host_prog = expand('$HOME/.pyenv/versions/nvim/bin/python3')
 let g:Guifont="Consolas:h13"
 
@@ -31,7 +32,8 @@ call plug#begin('~/.config/nvim/plugged')
 "
 "   " Add plugins to &runtimepath
 
-Plug 'altercation/vim-colors-solarized'
+Plug 'frankier/neovim-colors-solarized-truecolor-only'
+" Plug 'altercation/vim-colors-solarized'
 Plug 'justinmk/vim-gtfo'
 Plug 'justinmk/vim-sneak'
 Plug 'kana/vim-textobj-user'
@@ -48,6 +50,7 @@ Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'fatih/vim-go'
+Plug 'zchee/deoplete-jedi'
 
 
 call plug#end()
@@ -141,4 +144,6 @@ map [t gT
 map ]t gt
 map <C-tab> gt
 map <C-S-tab> gT
+
+autocmd CompleteDone * pclose " To close preview window of deoplete automagically
 
