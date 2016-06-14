@@ -3,38 +3,14 @@ let g:python3_host_prog = expand('$HOME/.pyenv/versions/nvim/bin/python3')
 let g:Guifont="Consolas:h13"
 
 call plug#begin('~/.config/nvim/plugged')
-"
-"   " Make sure you use single quotes
-"   Plug 'junegunn/seoul256.vim'
-"   Plug 'junegunn/vim-easy-align'
-"
-"   " Group dependencies, vim-snippets depends on ultisnips
-"   Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-"
-"   " On-demand loading
-"   Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-"   Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-"
-"   " Using git URL
-"   Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-"
-"   " Using a non-master branch
-"   Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
 
-"   " Plugin options
-"   Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
+Plug 'benekastah/neomake'
 "
-"   " Plugin outside ~/.vim/plugged with post-update hook
-"   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-"
-"   " Unmanaged plugin (manually installed and updated)
-"   Plug '~/my-prototype-plugin'
-"
-"   " Add plugins to &runtimepath
+" http://aftnn.org/post/75730734352/vim-auto-closers-compared
+Plug 'jiangmiao/auto-pairs'
 
 Plug 'frankier/neovim-colors-solarized-truecolor-only'
 Plug 'ervandew/supertab'
-" Plug 'altercation/vim-colors-solarized'
 Plug 'justinmk/vim-gtfo'
 Plug 'justinmk/vim-sneak'
 Plug 'kana/vim-textobj-user'
@@ -52,7 +28,7 @@ Plug 'honza/vim-snippets'
 Plug 'vim-scripts/YankRing.vim'
 Plug 'fatih/vim-go'
 Plug 'zchee/deoplete-jedi'
-
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 
 call plug#end()
 
@@ -75,9 +51,10 @@ augroup END
 let g:gtfo#terminals = { 'mac': 'iterm' }
 
 let g:deoplete#enable_at_startup = 1
-"
+let g:deoplete#sources#jedi#show_docstring = 1
+let deoplete#sources#jedi#show_docstring = 1
 
-autocmd CompleteDone * pclose " To close preview window of deoplete automagically
+" autocmd CompleteDone * pclose " To close preview window of deoplete automagically
 
 nmap <Space> <Plug>SneakForward
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
@@ -104,10 +81,10 @@ inoremap <M-Down> }
 inoremap <D-Down> <C-End>
 inoremap <M-Up> {
 inoremap <D-Up> <C-Home>
-noremap! <M-Right> <C-Right>
-noremap! <D-Right> <End>
-noremap! <M-Left> <C-Left>
-noremap! <D-Left> <Home>
+map <M-Right> <C-Right>
+map <D-Right> <End>
+map <M-Left> <C-Left>
+map <D-Left> <Home>
 
 " yadr-window-killer.vim
 " Use Q to intelligently close a window 
@@ -148,5 +125,3 @@ map [t gT
 map ]t gt
 map <C-tab> gt
 map <C-S-tab> gT
-
-
