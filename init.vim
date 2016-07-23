@@ -125,3 +125,15 @@ map [t gT
 map ]t gt
 map <C-tab> gt
 map <C-S-tab> gT
+
+
+
+
+" trying fasd cd stuff
+function! FasdCd(path)
+  let dir = system('fasd -e ''printf %s'' "' . a:path . '"')
+  echom dir
+  if strlen(dir) > 0
+    execute ":cd " . dir
+  endif
+endfunction
