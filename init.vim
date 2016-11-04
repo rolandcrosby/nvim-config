@@ -56,7 +56,7 @@ let deoplete#sources#jedi#show_docstring = 1
 
 " autocmd CompleteDone * pclose " To close preview window of deoplete automagically
 
-nmap <Space> <Plug>SneakForward
+nnoremap <Space> <Plug>SneakForward
 nnoremap ,cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <silent> // :nohlsearch<CR>
 
@@ -65,15 +65,20 @@ set tabstop=2 shiftwidth=2 expandtab
 set hidden
 
 " MAC MAPPINGS
-map <silent> <D-1> :tabn 1<cr>
-map <silent> <D-2> :tabn 2<cr>
-map <silent> <D-3> :tabn 3<cr>
-map <silent> <D-4> :tabn 4<cr>
-map <silent> <D-5> :tabn 5<cr>
-map <silent> <D-6> :tabn 6<cr>
-map <silent> <D-7> :tabn 7<cr>
-map <silent> <D-8> :tabn 8<cr>
-map <silent> <D-9> :tabn 9<cr>
+noremap <silent> <D-1> :tabn 1<cr>
+noremap <silent> <D-2> :tabn 2<cr>
+noremap <silent> <D-3> :tabn 3<cr>
+noremap <silent> <D-4> :tabn 4<cr>
+noremap <silent> <D-5> :tabn 5<cr>
+noremap <silent> <D-6> :tabn 6<cr>
+noremap <silent> <D-7> :tabn 7<cr>
+noremap <silent> <D-8> :tabn 8<cr>
+noremap <silent> <D-9> :tabn 9<cr>
+noremap <silent> <D-{> :tabp<cr>
+noremap <silent> <D-}> :tabn<cr>
+inoremap <silent> <D-{> <Esc>:tabp<cr>
+inoremap <silent> <D-}> <Esc>:tabn<cr>
+
 
 inoremap <D-BS> 
 inoremap <M-BS> 
@@ -81,10 +86,10 @@ inoremap <M-Down> }
 inoremap <D-Down> <C-End>
 inoremap <M-Up> {
 inoremap <D-Up> <C-Home>
-map <M-Right> <C-Right>
-map <D-Right> <End>
-map <M-Left> <C-Left>
-map <D-Left> <Home>
+noremap <M-Right> <C-Right>
+noremap <D-Right> <End>
+noremap <M-Left> <C-Left>
+noremap <D-Left> <Home>
 
 " yadr-window-killer.vim
 " Use Q to intelligently close a window 
@@ -115,16 +120,17 @@ if $GOPATH == ""
 endif
 
 let mapleader = ","
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <D-r> <Plug>(go-run) %
-au FileType go nmap <leader>b <Plug>(go-build)
-au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nnoremap <leader>r <Plug>(go-run)
+au FileType go nnoremap <D-r> <Plug>(go-run) %
+au FileType go nnoremap <leader>b <Plug>(go-build)
+au FileType go nnoremap <leader>t <Plug>(go-test)
+au FileType go nnoremap <leader>c <Plug>(go-coverage)
+au FileType go nnoremap <D-i> <Plug>(go-imports)
 
-map [t gT
-map ]t gt
-map <C-tab> gt
-map <C-S-tab> gT
+noremap <silent> [t :tabp<cr>
+noremap <silent> ]t :tabn<cr>
+noremap <silent> <C-S-tab> :tabp<cr>
+noremap <silent> <C-tab> :tabn<cr>
 
 
 
@@ -137,3 +143,4 @@ function! FasdCd(path)
     execute ":cd " . dir
   endif
 endfunction
+command! -nargs=1 Z call FasdCd(<f-args>)
